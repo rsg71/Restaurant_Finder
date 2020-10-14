@@ -1,4 +1,4 @@
-
+require("dotenv").config();
 
 // Getting lat and lng of the center of the city
 var lat = 39.955134;
@@ -10,9 +10,16 @@ var lng = -75.163718;
 
 var restaurantName = "GreatRestaurantExample";
 
-// googleApi = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCcEOHoI8NYfJyNpsmO6e9DZO0icAXUd0o&callback=initMap"
 
-// $("#google").attr("src", googleApi);
+// Create the script tag, set the appropriate attributes
+var script = document.createElement('script');
+script.src = process.env.googleApi;
+script.defer = true;
+
+
+window.initMap = initMap;
+
+
 
 // Initiate google maps
 function initMap() {
@@ -98,3 +105,6 @@ function initMap() {
         }
     };
 }
+
+// Append the 'script' element to 'head'
+document.head.appendChild(script);

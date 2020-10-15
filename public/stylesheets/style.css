@@ -2,337 +2,55 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
-
-html, body {
-  margin-bottom: 100px;
-  background-color: #ff7575;
+.loader {
+  margin: 0 auto;
+  display: none;
 }
-*
-{
-    outline: none;
+.display {
+  display: inline-block;
 }
-/* nav bar / Container */
-.container-fluid{
-background-color: salmon;
-}
-.navbar-header{
-  background-color: salmon;
-}
-
-html, body
-{
-    height: 100%;
-    min-height: 100%;
-}
-
-body
-{
-    margin: 0;
-    background-color: white;
-}
-
-.tb
-{
-    display: table;
-    width: 100%;
-}
-
-.td
-{
-    display: table-cell;
-    vertical-align: middle;
-}
-
-input, button
-{
-    color: #fff;
-    font-family: Nunito;
-    padding: 0;
-    margin: 0;
-    border: 0;
-    background-color: transparent;
-}
-
-#cover
-{
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    width: 550px;
-    padding: 35px;
-    margin: -83px auto 0 auto;
-    background-color: #ff7575;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px #ff7c7c, 0 0 0 20px #ffffffeb;
-    transform: scale(0.6);
-}
-
-form
-{
-    height: 96px;
-}
-
-input[type="text"]
-{
-    width: 100%;
-    height: 96px;
-    font-size: 60px;
-    line-height: 1;
-}
-
-input[type="text"]::placeholder
-{
-    color: white;
-}
-
-#s-cover
-{
-    width: 1px;
-    padding-left: 35px;
-}
-
-button
-{
-    position: relative;
-    display: block;
-    width: 84px;
-    height: 96px;
-    cursor: pointer;
-}
-
-#s-circle
-{
-    position: relative;
-    top: -8px;
-    left: 0;
-    width: 43px;
-    height: 43px;
-    margin-top: 0;
-    border-width: 15px;
-    border: 15px solid #fff;
-    background-color: transparent;
-    border-radius: 50%;
-    transition: 0.5s ease all;
-}
-
-button span
-{
-    position: absolute;
-    top: 68px;
-    left: 43px;
-    display: block;
-    width: 45px;
-    height: 15px;
-    background-color: transparent;
-    border-radius: 10px;
-    transform: rotateZ(52deg);
-    transition: 0.5s ease all;
-}
-
-button span:before, button span:after
-{
-    content: '';
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 45px;
-    height: 15px;
-    background-color: white;
-    border-radius: 10px;
-    transform: rotateZ(0);
-    transition: 0.5s ease all;
-}
-
-#s-cover:hover #s-circle
-{
-    top: -1px;
-    width: 67px;
-    height: 15px;
-    border-width: 0;
-    background-color: white;
-    border-radius: 20px;
-}
-
-#s-cover:hover span
-{
-    top: 50%;
-    left: 56px;
-    width: 25px;
-    margin-top: -9px;
-    transform: rotateZ(0);
-}
-
-#s-cover:hover button span:before
-{
-    bottom: 11px;
-    transform: rotateZ(52deg);
-}
-
-#s-cover:hover button span:after
-{
-    bottom: -11px;
-    transform: rotateZ(-52deg);
-}
-#s-cover:hover button span:before, #s-cover:hover button span:after
-{
-    right: -6px;
-    width: 40px;
-    background-color: #fff;
-}
-
-#ytd-url {
+.showItem {
   display: block;
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  padding: 10px 14px;
-  margin: 20px;
+}
+.feedback {
+  display: none;
+}
+.form-control {
+  border-color: var(--mainRed);
+}
+.jumbotron {
+background: linear-gradient(90deg,rgba(47,45,65,.7),rgba(47,45,65,.7)), url("../img/25161502-fbb7de.jpeg");
+background-position: 100%;
+}
+h2 {
+  font-weight: 700;
   color: #fff;
-  font-family: Nunito;
-  font-size: 14px;
-  text-decoration: none;
-  background-color: #ff7575;
-  border-radius: 4px;
-  box-shadow: 0 10px 20px -5px rgba(255, 117, 117, 0.86);
-  z-index: 125;
-}
-
-/* slider */
-.rangeslider{ 
-  width: 25%; 
-} 
-
-.myslider { 
-  -webkit-appearance: none; 
-  background: #fae79a  ; 
-  width: 50%; 
-  height: 20px; 
-  opacity: 2; 
- } 
-
-
-.myslider::-webkit-slider-thumb { 
-  -webkit-appearance: none; 
-  cursor: pointer; 
-  background: #34495E  ; 
-  width: 5%; 
-  height: 20px; 
-} 
-
-
-.myslider:hover { 
-  opacity: 1; 
-} 
-
-/* My resturants css */
-.content-container { 
-
-  font-size:0;
-}
-.inner-square {
-  background: #cccccc;
-  width: calc(20% - 8px);
-  height: calc(20% - 8px);
-  margin: 5px;    
-  display:inline-block;
-}
-.inner-square:nth-child(even) {
-  margin-left:0;
-}
-.inner-square:nth-child(n+2) {
-  margin-top:0;
-}
-/* My Resturants - heart symbol */
-span {
-  content: "\2665";
-}
-
-
-/* sign up form */
-a {
-  text-decoration: none;
 }
 body {
-  background: -webkit-linear-gradient(bottom, #ffd8d8, #ffd8d8);
+  background: url("../img/Restaurant Background Wallpaper Background.jpg");
+}
+.navbar {
+  border-width: 0 !important;
+}
+.container {
+  margin: 18px 34px 18px 0;
+}
+.cardimg {
+  border: 2px solid rgb(0, 0, 0);
+  background-position: center;
   background-repeat: no-repeat;
-}
-label {
-  font-family: "Raleway", sans-serif;
-  font-size: 11pt;
-}
-#card {
-  background: #fbfbfb;
-  border-radius: 8px;
-  box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.65);
-  height: 410px;
-  margin: 6rem auto 8.1rem auto;
-  width: 329px;
-}
-#card-content {
-  padding: 12px 44px;
-}
-#card-title {
-  font-family: "Raleway Thin", sans-serif;
-  letter-spacing: 4px;
-  padding-bottom: 23px;
-  padding-top: 13px;
-  text-align: center;
-}
-#signup {
-  color: salmon;
-  font-family: "Raleway", sans-serif;
-  font-size: 10pt;
-  margin-top: 16px;
-  text-align: center;
-}
-#submit-btn {
-  background: -webkit-linear-gradient(right, salmon, salmon);
-  border: none;
-  border-radius: 21px;
-  box-shadow: 0px 1px 8px salmon;
-  cursor: pointer;
-  color: white;
-  font-family: "Raleway SemiBold", sans-serif;
-  height: 42.3px;
-  margin: 0 auto;
-  margin-top: 50px;
-  transition: 0.25s;
-  width: 153px;
-}
-#submit-btn:hover {
-  box-shadow: 0px 1px 18px salmon;
-}
-.form {
-  align-items: left;
-  display: flex;
-  flex-direction: column;
-}
-.form-border {
-  background: -webkit-linear-gradient(right, salmon, salmon);
-  height: 1px;
+  background-size: cover;
+  min-width: 150px;
   width: 100%;
 }
-.form-content {
-  background: salmon;
-  border: none;
-  outline: none;
-  padding-top: 14px;
+.card {
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 10px 2px;
 }
-.underline-title {
-  background: -webkit-linear-gradient(right, salmon, salmon);
-  height: 2px;
-  margin: -1.1rem auto 0 auto;
-  width: 89px;
+.card-body {
+  padding: 5px 20px;
 }
-
-
-
-
-
-/* Google maps - this sets the map size */
-#googleMap {
-  width: 100%;
-  height: 200px;
-  background-color: grey;
+.navbar {
+  background-color: rgb(2, 2, 2);
 }

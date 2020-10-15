@@ -2,7 +2,7 @@
 //b1c2932740aae152b58849a59384d428
 class Zomato {
 	constructor() {
-		this.api = "b1c2932740aae152b58849a59384d428";
+		this.api = "406a36928c14de7ad8474610b9e643e3";
 		this.header = {
 			method: 'GET',
 			headers: {
@@ -238,10 +238,9 @@ class UI {
 
 
 
-
-// Google Maps below
-
-
+// =======================================================
+// Google Maps below 
+// =======================================================
 
 
 

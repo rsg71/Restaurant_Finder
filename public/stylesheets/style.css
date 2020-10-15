@@ -28,7 +28,7 @@ html, body
 body
 {
     margin: 0;
-    background-color: #ffd8d8;
+    background-color: white;
 }
 
 .tb
@@ -83,7 +83,7 @@ input[type="text"]
 
 input[type="text"]::placeholder
 {
-    color: #e16868;
+    color: white;
 }
 
 #s-cover
@@ -138,7 +138,7 @@ button span:before, button span:after
     right: 0;
     width: 45px;
     height: 15px;
-    background-color: #fff;
+    background-color: white;
     border-radius: 10px;
     transform: rotateZ(0);
     transition: 0.5s ease all;
@@ -150,7 +150,7 @@ button span:before, button span:after
     width: 67px;
     height: 15px;
     border-width: 0;
-    background-color: #fff;
+    background-color: white;
     border-radius: 20px;
 }
 
@@ -198,17 +198,6 @@ button span:before, button span:after
   z-index: 125;
 }
 
-/* checkBox */
-.checkBox{
-  display: table-cell;
-  display: block;
-  position: center;
-  right: 0;
-  bottom: 0;
-  padding: 10px 14px;
-  margin: 100px;
-}
-
 /* slider */
 .rangeslider{ 
   width: 25%; 
@@ -236,7 +225,7 @@ button span:before, button span:after
   opacity: 1; 
 } 
 
-/* resturants css */
+/* My resturants css */
 .content-container { 
 
   font-size:0;
@@ -254,8 +243,96 @@ button span:before, button span:after
 .inner-square:nth-child(n+2) {
   margin-top:0;
 }
-/* heart symbol */
+/* My Resturants - heart symbol */
 span {
   content: "\2665";
 }
 
+
+/* sign up form */
+a {
+  text-decoration: none;
+}
+body {
+  background: -webkit-linear-gradient(bottom, #ffd8d8, #ffd8d8);
+  background-repeat: no-repeat;
+}
+label {
+  font-family: "Raleway", sans-serif;
+  font-size: 11pt;
+}
+#card {
+  background: #fbfbfb;
+  border-radius: 8px;
+  box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.65);
+  height: 410px;
+  margin: 6rem auto 8.1rem auto;
+  width: 329px;
+}
+#card-content {
+  padding: 12px 44px;
+}
+#card-title {
+  font-family: "Raleway Thin", sans-serif;
+  letter-spacing: 4px;
+  padding-bottom: 23px;
+  padding-top: 13px;
+  text-align: center;
+}
+#signup {
+  color: salmon;
+  font-family: "Raleway", sans-serif;
+  font-size: 10pt;
+  margin-top: 16px;
+  text-align: center;
+}
+#submit-btn {
+  background: -webkit-linear-gradient(right, salmon, salmon);
+  border: none;
+  border-radius: 21px;
+  box-shadow: 0px 1px 8px salmon;
+  cursor: pointer;
+  color: white;
+  font-family: "Raleway SemiBold", sans-serif;
+  height: 42.3px;
+  margin: 0 auto;
+  margin-top: 50px;
+  transition: 0.25s;
+  width: 153px;
+}
+#submit-btn:hover {
+  box-shadow: 0px 1px 18px salmon;
+}
+.form {
+  align-items: left;
+  display: flex;
+  flex-direction: column;
+}
+.form-border {
+  background: -webkit-linear-gradient(right, salmon, salmon);
+  height: 1px;
+  width: 100%;
+}
+.form-content {
+  background: salmon;
+  border: none;
+  outline: none;
+  padding-top: 14px;
+}
+.underline-title {
+  background: -webkit-linear-gradient(right, salmon, salmon);
+  height: 2px;
+  margin: -1.1rem auto 0 auto;
+  width: 89px;
+}
+
+
+
+
+
+/* Google maps - this sets the map size */
+#googleMap {
+  width: 100%;
+  height: 200px;
+  background-color: grey;
+}

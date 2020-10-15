@@ -21,6 +21,10 @@ window.initMap = initMap;
 
 
 
+
+
+
+
 // Initiate google maps
 function initMap() {
     var options = {

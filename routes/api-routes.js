@@ -50,4 +50,25 @@ module.exports = function(app) {
       });
     }
   });
+  app.post("/api/restaurants", (req,res) => {
+    console.log(req.body)
+    var newFavorite = {
+      name: req.body.name,
+			image: req.body.image,
+			address: req.body.address,
+			rating: req.body.rating,
+			description: req.body.description,
+			menuLink: req.body.menuLink,
+      UserId: req.user.id
+    }
+    db.Favorite.create(newFavorite).then(function(data){res.json(data)})
+  })
+  app.get("/api/restaurants", (req,res) => {
+    db.Favorite.findAll({
+      where:{
+        UserId: req.user.id
+      }
+    }).then(function(data){res.json(data)})
+  }) 
 };
+

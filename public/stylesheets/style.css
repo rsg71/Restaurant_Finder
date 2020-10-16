@@ -1,0 +1,64 @@
+form.signup,
+form.login {
+  margin-top: 50px;
+}
+.loader {
+  margin: 0 auto;
+  display: none;
+}
+.display {
+  display: inline-block;
+}
+.showItem {
+  display: block;
+}
+.feedback {
+  display: none;
+}
+.form-control {
+  border-color: var(--mainRed);
+}
+.jumbotron {
+background: linear-gradient(90deg,rgba(47,45,65,.7),rgba(47,45,65,.7)), url("../img/25161502-fbb7de.jpeg");
+background-position: 100%;
+}
+h2 {
+  font-weight: 700;
+  color: #fff;
+}
+body {
+  background: url("../img/Restaurant Background Wallpaper Background.jpg");
+}
+.navbar {
+  border-width: 0 !important;
+}
+.container {
+  float:left;
+  margin: 18px 34px 18px 0;
+}
+.cardimg {
+  border: 2px solid rgb(0, 0, 0);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-width: 150px;
+  width: 100%;
+}
+.card {
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 10px 2px;
+}
+.card-body {
+  padding: 5px 20px;
+}
+.navbar {
+  background-color: rgb(2, 2, 2);
+}
+
+#googleMap {
+  float: right;
+  width: 50%;
+  height: 400px;
+  background-color: grey;
+}

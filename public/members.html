@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Passport Authentication</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
+  <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/logout">
+          Logout
+        </a>
+      </div>
+    </div>
+  </nav>
+  <div class="jumbotron">
+    <div class="container-fluid text-center">
+      <h2>Welcome <span class="member-name"></span></h2>
+      <div class="feedback alert alert-danger text-center text-capitalize">please enter city</div>
+      <h2>Please Enter City to Find Local Restaurants</h2>
+      <form id="searchForm" class="4">
+        <!-- form group -->
+        <div class="display">
+          <div class="form-group row">
+            <select class="custom-select text-capitalize" id="searchCategory"></select>
+          </div>
+          <input type="text" class="form-control text-capitalize" id="searchCity" placeholder="Enter City...."></input>
+          <div class="input-group-append">
+            <button type="submit" class="btn btn-primary">search</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+
+
+  <div id="googleMap"></div>
+  
+ 
+
+
+  <img src="img/loader.gif" class="loader" alt="">
+  <!-- restaurant section -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row" id="restaurant-list">
+        <!-- item -->
+        <div class="container">
+          <!-- item -->
+        </div>
+      </div>
+  </section>
+
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/members.js"></script>
+  <script type="text/javascript" src="js/script.js"></script>
+  <!-- <script type="text/javascript" src="js/googleMaps.js"></script> -->
+
+  
+
+</body>
+
+</html>

@@ -54,3 +54,18 @@ body {
 .navbar {
   background-color: rgb(2, 2, 2);
 }
+
+#googleMap {
+  float: right;
+  width: 50%;
+  height: 400px;
+  background-color: grey;
+}
+
+#restaurant-list {
+  float:left;
+  width: 50%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+

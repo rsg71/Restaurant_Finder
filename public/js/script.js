@@ -21,16 +21,22 @@ class Zomato {
 		const cityURL = `https://developers.zomato.com/api/v2.1/cities?q=${city}
 		`
 
+
+
 		//category data
 		const categoryInfo = await fetch(categoryURL, this.header)
 		const categoryJSON = await categoryInfo.json();
 		const categories = await categoryJSON.categories;
 
 
+		if (!city) return {
+			categories
+		}
 		//search city
 		const cityInfo = await fetch(cityURL, this.header);
 		const cityJSON = await cityInfo.json()
 
+		console.log(cityJSON)
 
 
 		const cityLocation = await cityJSON.location_suggestions;
@@ -56,25 +62,23 @@ class Zomato {
 
 		const markersArray = [];
 
-
 		if (restaurantJSON.restaurants.length > 0) {
+
+
 			for (var i = 0; i < restaurantJSON.restaurants.length; i++) {
 
 				// console.log(restaurantJSON.restaurants[i].restaurant)
 				addMarker({
 					coords: { lat: parseFloat(restaurantJSON.restaurants[i].restaurant.location.latitude), lng: parseFloat(restaurantJSON.restaurants[i].restaurant.location.longitude) },
-					content: "<h1>" + restaurantJSON.restaurants[i].restaurant.name + "<h1>"
+					content: "<h4>" + restaurantJSON.restaurants[i].restaurant.name + "</h4>" +
+						"<p>" + restaurantJSON.restaurants[i].restaurant.location.address + "</p>"
+
 				})
+
+
+
 			}
-
-			// console.log('markers array is', markersArray)
-
-			// for (var i = 0; i < markersArray.length; i++) {
-			// 	ui.addMarker(markersArray[i]);
-			// }
-
-
-
+			console.log(restaurantJSON.restaurants[0].restaurant.name)
 		}
 
 
@@ -274,9 +278,21 @@ class UI {
 		const cityValue = searchCity.value.toLowerCase()
 
 		if (categoryValue != 0 && cityValue != '') {
-			//logic goes if populated values
+			
+			// fetch("http://localhost:8080/api/restaurants/" + cityValue +"/" + categoryValue, {
+			// 	method: "GET"
+			// }).then(function(results) {
+			// 	results.json();
+			// }).then(function(results) {
+				
+			// 	window.location = "/"
+			// })
+
+			// logic goes if populated values
 			zomato.searchAPI(cityValue)
 				.then(data => {
+					window.initMap = initMap;
+
 					if (data.cityID !== 0) {
 						// console.log(data.cityID)
 						ui.showLoader()
@@ -293,9 +309,7 @@ class UI {
 		}
 	})
 
-
-
-})()
+})();
 
 
 
@@ -308,31 +322,18 @@ class UI {
 // =======================================================
 
 
-
-// module.exports 
-// require("dotenv").config();
-
-// Getting lat and lng of the center of the city
-var lat = 39.955134;
-var lng = -75.163718;
-
-
-// lat and lng are located within the restaurant list within the JSON that the api returns
-
-
-var restaurantName = "GreatRestaurantExample";
-
-
 // Create the script tag, set the appropriate attributes
 var script = document.createElement('script');
 script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCcEOHoI8NYfJyNpsmO6e9DZO0icAXUd0o&callback=initMap"
 script.defer = true;
 
 
-window.initMap = initMap;
+// window.initMap = initMap;
 
 
-
+// Getting lat and lng of the center of the city
+var lat = 39.862082;
+var lng = -97.621599;
 
 
 var map;
@@ -340,85 +341,32 @@ var map;
 // Initiate google maps
 function initMap() {
 	var options = {
-		zoom: 13,
-		//when we search by city, the center should probably be the middle of the city
-		center: { lat: lat, lng: lng }
+		zoom: 12,
+		// center: { lat: lat, lng: lng }
 	}
 	map = new google.maps.Map(document.getElementById("googleMap"), options)
-
-
-
-	// ==============================================marker array =================================
-
-	// array of markers
-
-
-	// console.log(markersArray)
-	// markersArray = [
-	// 	{
-	// 		coords: { lat: 39.952759, lng: -75.184654 },
-	// 		content: '<h1>' + restaurantName + '</h1>'
-	// 	},
-	// 	{
-	// 		coords: { lat: 39.945587, lng: -75.147017 },
-	// 		content: '<h1>' + restaurantName + '</h1>'
-	// 	},
-	// 	{
-	// 		coords: { lat: 39.961706, lng: -75.162767 },
-	// 		content: '<h1>' + restaurantName + '</h1>'
-	// 	}
-	// ];
-
-
-
-
-
-	//FOR GOOGLE MAPS ON OUR PROJECT
-	// we need to push the coords as an data (the JSON data) to the markersArray
-	// getting the longitude and latitude for each result (i) from the api query and pushing it to the markers array
-	// for (var i = 0; i < restaurantJSON.restaurants.length; i++) {
-
-	// 	console.log(restaurantJSON.restaurants[i].restaurant)
-	//     // markersArray.push({
-	//     //     coords: { lat: restaurantJSON.restaurants[i].restaurant.location.latitude, lng: restaurantJSON.restaurants[i].restaurant.location.longitude },
-	//     //     content: "<h1>" + restaurantJSON.restaurants[i].restaurant.name + "<h1>"
-	//     // })
-	// }
-
-	// ==============================================marker array =================================
-
-	//creating the markers on the map by looping through each restaurant on the the markers array
-
-
-
-
-
-	//this is how you would add a single marker for a prefedined lat and lng, referenced above
-	// addMarker({
-	//     coords: { lat: lat, lng: lng },
-	//     content: '<h1>' + restaurantName + '</h1>'
-	// });
+	map.setCenter(new google.maps.LatLng(40.1030433, -75.20411639999999));
 
 
 }
-	//Add Marker function
-	function addMarker(props) {
-		var marker = new google.maps.Marker({
-			position: props.coords,
-			map: map,
+//Add Marker function
+function addMarker(props) {
+	var marker = new google.maps.Marker({
+		position: props.coords,
+		map: map,
+	});
+
+
+	if (props.content) {
+		var infoWindow = new google.maps.InfoWindow({
+			content: props.content
 		});
 
-
-		if (props.content) {
-			var infoWindow = new google.maps.InfoWindow({
-				content: props.content
-			});
-
-			marker.addListener('click', function () {
-				infoWindow.open(map, marker);
-			});
-		}
-	};
+		marker.addListener('click', function () {
+			infoWindow.open(map, marker);
+		});
+	}
+};
 
 
 // Append the 'script' element to 'head'

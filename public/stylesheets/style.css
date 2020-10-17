@@ -56,16 +56,17 @@ body {
 }
 
 #googleMap {
-  float: right;
-  width: 50%;
+  float: center;
+  width: 100%;
   height: 400px;
   background-color: grey;
 }
 
 #restaurant-list {
-  float:left;
-  width: 50%;
+  float:center;
+  width: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
+  height:500px;
 }
 

@@ -1,6 +1,7 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
+require("dotenv").config();
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -50,4 +51,14 @@ module.exports = function(app) {
       });
     }
   });
+
+
+
+  app.get("/api/restaurants/:city/:category" , (req, res) => {
+  console.log("restaurants")
+  console.log(req.params)
+
+
+  })
+
 };

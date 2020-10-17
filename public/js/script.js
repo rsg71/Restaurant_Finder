@@ -78,7 +78,6 @@ class Zomato {
 
 
 			}
-			console.log(restaurantJSON.restaurants[0].restaurant.name)
 		}
 
 
@@ -274,6 +273,7 @@ class UI {
 	//submit form
 	searchForm.addEventListener('submit', e => {
 		e.preventDefault()
+		markersArray = [];
 		const categoryValue = parseInt(searchCategory.value)
 		const cityValue = searchCity.value.toLowerCase()
 
@@ -332,8 +332,8 @@ script.defer = true;
 
 
 // Getting lat and lng of the center of the city
-var lat = 39.862082;
-var lng = -97.621599;
+// var lat = 39.862082;
+// var lng = -97.621599;
 
 
 var map;
@@ -341,11 +341,11 @@ var map;
 // Initiate google maps
 function initMap() {
 	var options = {
-		zoom: 12,
+		zoom: 4,
 		// center: { lat: lat, lng: lng }
 	}
 	map = new google.maps.Map(document.getElementById("googleMap"), options)
-	map.setCenter(new google.maps.LatLng(40.1030433, -75.20411639999999));
+	map.setCenter(new google.maps.LatLng(39.862082, -97.621599));
 
 
 }

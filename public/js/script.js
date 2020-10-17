@@ -99,7 +99,50 @@ class UI {
 	constructor() {
 		this.loader = document.querySelector('.loader');
 		this.restaurantList = document.querySelector('#restaurant-list')
-	}
+		// this.saveRestaurant = function (event) {
+//      event.preventDefault();
+//         var id = $(this).data("id");
+//         var favRestuarants = {
+//             fav : 1
+//         };
+
+//         console.log(id);
+//         console.log(favRestuarants);
+//         console.log("CLICKED");
+//         $.ajax("/api/restaurants/" + id, {
+//             type: "PUT",
+//             data: favRestuarants
+//         }).then(function() {
+//             console.log("Restaurants added");
+//             location.reload();
+//         });
+// };
+	//}
+
+	//saveRestaurant(event) {
+//      event.preventDefault();
+//         var favRestuarants = {
+//             name:$(this).attr("data-name"),
+// 			image:$(this).attr("data-img"),
+// 			address:$(this).attr("data-address"),
+// 			rating:$(this).attr("data-rating"),
+// 			description:$(this).attr("data-description"),
+// 			menuLink:$(this).attr("data-menu")
+
+//         };
+
+//         console.log();
+//         console.log(favRestuarants);
+//         console.log("CLICKED");
+//         $.ajax("/api/restaurants/", {
+//             type: "POST",
+//             data: favRestuarants
+//         }).then(function() {
+//             console.log("Restaurants added");
+//             location.reload();
+//         });
+// }
+	};
 
 	addSelectOptions(categories) {
 		const search = document.getElementById('searchCategory')
@@ -175,16 +218,16 @@ class UI {
                         </div>
                     </div>
                 </div>
+				<div> <button  type="button" data-name="${name}" data-image="${img}" data-address="${address}" data-rating="${aggregate_rating}"  data-description="${cuisines}" data-menu="${menu_url}" id="print" class="addRestaurant btn">Save</button> </div>
             </div>
 		</div>
 		
-
-
     </div>
 		`
 		this.restaurantList.appendChild(div)
 	}
 }
+
 
 
 
@@ -196,6 +239,28 @@ class UI {
 	const zomato = new Zomato()
 
 	const ui = new UI()
+
+	$(document).on("click", ".addRestaurant", function(event){     event.preventDefault();
+        var favRestuarants = {
+            name:$(this).attr("data-name"),
+			image:$(this).attr("data-image"),
+			address:$(this).attr("data-address"),
+			rating:$(this).attr("data-rating"),
+			description:$(this).attr("data-description"),
+			menuLink:$(this).attr("data-menu")
+
+        };
+
+        console.log();
+        console.log(favRestuarants);
+        console.log("CLICKED");
+        $.ajax("/api/restaurants/", {
+            type: "POST",
+            data: favRestuarants
+        }).then(function() {
+            console.log("Restaurants added");
+            location.reload();
+        });})
 
 	//add select options
 	document.addEventListener('DOMContentLoaded', () => {

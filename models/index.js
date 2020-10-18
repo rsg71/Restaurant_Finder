@@ -42,7 +42,7 @@ passport.use(
     {
       clientID: 770429656855625,
       clientSecret: "918d63ad1fb075d186462161a20d6acaRe",
-      callbackURL: "http://localhost:3000/auth/facebook/callback",
+      callbackURL: "http://localhost:8080/auth/facebook/secrets",
     },
     function(accessToken, refreshToken, profile, cb) {
       User.findOrCreate({ facebookId: profile.id }, function(err, user) {

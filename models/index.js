@@ -40,7 +40,7 @@ Object.keys(db).forEach(function(modelName) {
 passport.use(
   new FacebookStrategy(
     {
-      clientID: 770429656855625,
+      clientID: "770429656855625",
       clientSecret: "918d63ad1fb075d186462161a20d6acaRe",
       callbackURL: "http://localhost:8080/auth/facebook/secrets",
     },
@@ -50,6 +50,17 @@ passport.use(
       });
     }
   )
+);
+
+app.get("/auth/facebook/secrets", passport.authenticate("facebook"));
+
+app.get(
+  "/auth/facebook/callback",
+  passport.authenticate("facebook", { failureRedirect: "/login" }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect("/members");
+  }
 );
 
 db.sequelize = sequelize;

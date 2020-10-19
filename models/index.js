@@ -7,7 +7,6 @@ var basename = path.basename(module.filename);
 var env = process.env.NODE_ENV || "development";
 var config = require(__dirname + "/../config/config.json")[env];
 var db = {};
-const FacebookStrategy = require("passport-facebook").Strategy;
 
 if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env[config.use_env_variable]);
@@ -36,32 +35,6 @@ Object.keys(db).forEach(function(modelName) {
     db[modelName].associate(db);
   }
 });
-
-passport.use(
-  new FacebookStrategy(
-    {
-      clientID: "770429656855625",
-      clientSecret: "918d63ad1fb075d186462161a20d6acaRe",
-      callbackURL: "http://localhost:8080/auth/facebook/secrets",
-    },
-    function(accessToken, refreshToken, profile, cb) {
-      User.findOrCreate({ facebookId: profile.id }, function(err, user) {
-        return cb(err, user);
-      });
-    }
-  )
-);
-
-app.get("/auth/facebook/secrets", passport.authenticate("facebook"));
-
-app.get(
-  "/auth/facebook/callback",
-  passport.authenticate("facebook", { failureRedirect: "/login" }),
-  function(req, res) {
-    // Successful authentication, redirect home.
-    res.redirect("/members");
-  }
-);
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

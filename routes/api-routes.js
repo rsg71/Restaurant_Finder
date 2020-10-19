@@ -3,7 +3,7 @@ const db = require("../models");
 const passport = require("../config/passport");
 require("dotenv").config();
 
-module.exports = function (app) {
+module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
@@ -11,7 +11,7 @@ module.exports = function (app) {
     // Sending back a password, even a hashed password, isn't a good idea
     res.json({
       email: req.user.email,
-      id: req.user.id
+      id: req.user.id,
     });
   });
 
@@ -21,12 +21,12 @@ module.exports = function (app) {
   app.post("/api/signup", (req, res) => {
     db.User.create({
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
     })
       .then(() => {
         res.redirect(307, "/api/login");
       })
-      .catch(err => {
+      .catch((err) => {
         res.status(401).json(err);
       });
   });
@@ -47,12 +47,12 @@ module.exports = function (app) {
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
         email: req.user.email,
-        id: req.user.id
+        id: req.user.id,
       });
     }
   });
   app.post("/api/restaurants", (req, res) => {
-    console.log(req.body)
+    console.log(req.body);
     var newFavorite = {
       name: req.body.name,
       image: req.body.image,
@@ -60,24 +60,31 @@ module.exports = function (app) {
       rating: req.body.rating,
       description: req.body.description,
       menuLink: req.body.menuLink,
-      UserId: req.user.id
-    }
+      UserId: req.user.id,
+    };
 
-    db.Favorite.create(
-      newFavorite
-    ).then(function (data) {
-
-      res.json(data)
+    db.Favorite.create(newFavorite).then(function(data) {
+      res.json(data);
     });
   });
-
-
 
   app.get("/api/restaurants", (req, res) => {
     db.Favorite.findAll({
       where: {
-        UserId: req.user.id
-      }
-    }).then(function (data) { res.json(data) })
-  })
+        UserId: req.user.id,
+      },
+    }).then(function(data) {
+      res.json(data);
+    });
+  });
+
+  // app.delete("/api/restaurants", (req, res) => {
+  //   db.Favorite.delete({
+  //     where: {
+  //       id: req.params.id,
+  //     },
+  //   }).then(function(deleterestaurant) {
+  //     res.json(eleterestaurant);
+  //   });
+  // });
 };

@@ -26,4 +26,15 @@ module.exports = function(app) {
   app.get("/members", isAuthenticated, (req, res) => {
     res.sendFile(path.join(__dirname, "../public/members.html"));
   });
+
+
+  app.get("/favorites", (req, res) => {
+    // If the user already has an account send them to the members page
+
+    // if (req.user) {
+    //   res.redirect("/favorites");
+    // }
+    res.sendFile(path.join(__dirname, "../public/favorites.html"));
+  });
+
 };

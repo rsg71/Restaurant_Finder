@@ -3,6 +3,7 @@ const LocalStrategy = require("passport-local").Strategy;
 const FacebookStrategy = require("passport-facebook").Strategy;
 
 const db = require("../models");
+require("dotenv").config();
 
 // Telling passport we want to use a Local Strategy. In other words, we want login with a username/email and password
 passport.use(
@@ -40,9 +41,10 @@ passport.use(
 passport.use(
   new FacebookStrategy(
     {
-      clientID: "770429656855625",
-      clientSecret: "918d63ad1fb075d186462161a20d6aca",
-      callbackURL: "http://localhost:8080/auth/facebook/callback",
+      clientID: process.env.CLIENT_ID_FB,
+      clientSecret: process.env.CLIENT_SECRET_FB,
+      callbackURL:
+        "http://findtherestaurant500.herokuapp.com/auth/facebook/callback",
     },
     function(accessToken, refreshToken, profile, cb) {
       db.User.findOrCreate({ where: { facebookId: profile.id } }).then(

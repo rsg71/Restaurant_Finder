@@ -1,8 +1,9 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
+require("dotenv").config();
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
@@ -50,24 +51,33 @@ module.exports = function(app) {
       });
     }
   });
-  app.post("/api/restaurants", (req,res) => {
+  app.post("/api/restaurants", (req, res) => {
     console.log(req.body)
     var newFavorite = {
       name: req.body.name,
-			image: req.body.image,
-			address: req.body.address,
-			rating: req.body.rating,
-			description: req.body.description,
-			menuLink: req.body.menuLink,
+      image: req.body.image,
+      address: req.body.address,
+      rating: req.body.rating,
+      description: req.body.description,
+      menuLink: req.body.menuLink,
       UserId: req.user.id
     }
-    db.Favorite.create(newFavorite).then(function(data){res.json(data)})
-  })
-  app.get("/api/restaurants", (req,res) => {
+
+    db.Favorite.create(
+      newFavorite
+    ).then(function (data) {
+
+      res.json(data)
+    });
+  });
+
+
+
+  app.get("/api/restaurants", (req, res) => {
     db.Favorite.findAll({
-      where:{
+      where: {
         UserId: req.user.id
       }
-    }).then(function(data){res.json(data)})
-  }) 
+    }).then(function (data) { res.json(data) })
+  })
 };

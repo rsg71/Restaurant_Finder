@@ -28,6 +28,7 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/members.html"));
   });
 
+<<<<<<< HEAD
   app.get("/auth/facebook/secrets", passport.authenticate("facebook"));
 
   app.get(
@@ -38,4 +39,16 @@ module.exports = function(app) {
       res.redirect("/members");
     }
   );
+=======
+
+  app.get("/favorites", (req, res) => {
+    // If the user already has an account send them to the members page
+
+    // if (req.user) {
+    //   res.redirect("/favorites");
+    // }
+    res.sendFile(path.join(__dirname, "../public/favorites.html"));
+  });
+
+>>>>>>> b81debcd6e3daa21d7243afd52071f7acb57b237
 };

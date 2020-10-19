@@ -1,15 +1,25 @@
 {
   "development": {
     "username": "root",
+<<<<<<< HEAD
     "password": "May27012",
     "database": "passport_demo",
+=======
+    "password": null,
+    "database": "project",
+>>>>>>> b81debcd6e3daa21d7243afd52071f7acb57b237
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
+<<<<<<< HEAD
     "password": "May27012",
     "database": "passport_demo",
+=======
+    "password": null,
+    "database": "project",
+>>>>>>> b81debcd6e3daa21d7243afd52071f7acb57b237
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

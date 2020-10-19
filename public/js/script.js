@@ -351,11 +351,31 @@ function initMap() {
 }
 //Add Marker function
 function addMarker(props) {
+
+
+
+	//create empty LatLngBounds object
+	var bounds = new google.maps.LatLngBounds();
+
+
+
 	var marker = new google.maps.Marker({
 		position: props.coords,
 		map: map,
 	});
 
+
+	//extend the bounds to include each marker's position
+	bounds.extend(marker.position);
+
+
+	// console.log(bounds)
+
+	//now fit the map to the newly inclusive bounds
+	map.fitBounds(bounds);
+
+
+	map.setZoom(11)
 
 	if (props.content) {
 		var infoWindow = new google.maps.InfoWindow({

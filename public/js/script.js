@@ -258,7 +258,7 @@ class UI {
             data: favRestuarants
         }).then(function() {
             console.log("Restaurants added");
-            location.reload();
+            
         });})
 
 	//add select options

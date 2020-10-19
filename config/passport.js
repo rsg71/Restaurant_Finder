@@ -1,5 +1,6 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
+const FacebookStrategy = require("passport-facebook").Strategy;
 
 const db = require("../models");
 
@@ -8,25 +9,25 @@ passport.use(
   new LocalStrategy(
     // Our user will sign in using an email, rather than a "username"
     {
-      usernameField: "email"
+      usernameField: "email",
     },
     (email, password, done) => {
       // When a user tries to sign in this code runs
       db.User.findOne({
         where: {
-          email: email
-        }
-      }).then(dbUser => {
+          email: email,
+        },
+      }).then((dbUser) => {
         // If there's no user with the given email
         if (!dbUser) {
           return done(null, false, {
-            message: "Incorrect email."
+            message: "Incorrect email.",
           });
         }
         // If there is a user with the given email, but the password the user gives us is incorrect
         else if (!dbUser.validPassword(password)) {
           return done(null, false, {
-            message: "Incorrect password."
+            message: "Incorrect password.",
           });
         }
         // If none of the above, return the user
@@ -36,6 +37,25 @@ passport.use(
   )
 );
 
+passport.use(
+  new FacebookStrategy(
+    {
+      clientID: "770429656855625",
+      clientSecret: "918d63ad1fb075d186462161a20d6aca",
+      callbackURL: "http://localhost:8080/auth/facebook/callback",
+    },
+    function(accessToken, refreshToken, profile, cb) {
+      db.User.findOrCreate({ where: { facebookId: profile.id } }).then(
+        function(user) {
+          return cb(null, user);
+        },
+        function(err) {
+          return cb(err);
+        }
+      );
+    }
+  )
+);
 // In order to help keep authentication state across HTTP requests,
 // Sequelize needs to serialize and deserialize the user
 // Just consider this part boilerplate needed to make it all work
@@ -46,6 +66,6 @@ passport.serializeUser((user, cb) => {
 passport.deserializeUser((obj, cb) => {
   cb(null, obj);
 });
-
+console.log(passport);
 // Exporting our configured passport
 module.exports = passport;

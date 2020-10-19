@@ -43,7 +43,8 @@ passport.use(
     {
       clientID: process.env.CLIENT_ID_FB,
       clientSecret: process.env.CLIENT_SECRET_FB,
-      callbackURL: "http://localhost:8080/auth/facebook/callback",
+      callbackURL:
+        "http://findtherestaurant500.herokuapp/auth/facebook/callback",
     },
     function(accessToken, refreshToken, profile, cb) {
       db.User.findOrCreate({ where: { facebookId: profile.id } }).then(

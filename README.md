@@ -28,7 +28,7 @@ This restaurant finder app intakes criteria for restaurant category and city and
 
 
 ## Demo
-[Click here for demo](https://infinite-badlands-42147.herokuapp.com/)
+[Click here for demo](https://findtherestaurant500.herokuapp.com/)
 
 
 ## Built With: 
